@@ -1,0 +1,23 @@
+{
+  "name": "tradingview",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "binance": "node binance.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/llwslc/tradingview.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/llwslc/tradingview/issues"
+  },
+  "homepage": "https://github.com/llwslc/tradingview#readme",
+  "dependencies": {
+    "axios": "^0.27.2"
+  }
+}
