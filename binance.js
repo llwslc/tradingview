@@ -2,7 +2,7 @@ const fs = require('fs/promises');
 const axios = require('axios');
 
 const BINANCE_URL = 'https://api.binance.com/api/v3/ticker/price';
-const BINANCE_LIST_PATH = 'binance.list';
+const BINANCE_LIST_PATH = 'binance.txt';
 
 const main = async () => {
   try {
