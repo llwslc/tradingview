@@ -1,7 +1,7 @@
 const fs = require('fs/promises');
 const axios = require('axios');
 
-const BINANCE_URL = 'https://api.binance.com/api/v3/ticker/price';
+const BINANCE_URL = 'https://api.binance.com/api/v3/ticker/24hr';
 const BINANCE_LIST_PATH = 'binance.txt';
 
 const main = async () => {
@@ -14,8 +14,8 @@ const main = async () => {
     const { data } = await axios.get(BINANCE_URL);
 
     let listStr = '';
-    data.forEach(({ symbol }) => {
-      if (/USDT$/.test(symbol)) {
+    data.forEach(({ symbol, firstId }) => {
+      if (/USDT$/.test(symbol) && firstId !== -1) {
         listStr += `BINANCE:${symbol}\n`;
       }
     });
