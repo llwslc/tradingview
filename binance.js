@@ -2,10 +2,16 @@ const fs = require('fs/promises');
 const axios = require('axios');
 
 const BINANCE_URL = 'https://api.binance.com/api/v3/ticker/24hr';
-const BINANCE_LIST_PATH = 'Binance.txt';
+const LIST_PATH = './list';
+const BINANCE_LIST_PATH = `${LIST_PATH}/Binance.txt`;
 
 const main = async () => {
   try {
+    try {
+      await access(LIST_PATH);
+    } catch (error) {
+      await fs.mkdir(LIST_PATH);
+    }
     await fs.access(BINANCE_LIST_PATH);
     await fs.unlink(BINANCE_LIST_PATH);
   } catch {}
