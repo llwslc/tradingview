@@ -20,12 +20,13 @@ const main = async () => {
     const { data } = await axios.get(BINANCE_URL);
 
     let listStr = '';
-    data.forEach(({ symbol, firstId }) => {
+    data.forEach(({ symbol, firstId, closeTime }) => {
       if (firstId === -1) return;
       if (/UPUSDT$/.test(symbol)) return;
       if (/DOWNUSDT$/.test(symbol)) return;
 
       if (/USDT$/.test(symbol)) {
+        if (Date.now() - closeTime > 24 * 60 * 60 * 1000) return;
         listStr += `BINANCE:${symbol}\n`;
       }
     });
