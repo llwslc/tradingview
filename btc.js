@@ -20,8 +20,9 @@ const main = async () => {
     const { data } = await axios.get(BINANCE_URL);
 
     let listStr = '';
-    data.forEach(({ symbol, firstId }) => {
+    data.forEach(({ symbol, firstId, closeTime }) => {
       if (firstId === -1) return;
+      if (Date.now() - closeTime > 24 * 60 * 60 * 1000) return;
 
       if (/BTC$/.test(symbol)) {
         listStr += `BINANCE:${symbol}\n`;
