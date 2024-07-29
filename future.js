@@ -18,12 +18,13 @@ const main = async () => {
 
   try {
     const {
-      data: { symbols },
+      data: { symbols }
     } = await axios.get(BINANCE_URL);
 
     let listStr = '';
-    symbols.forEach(({ pair, quoteAsset }) => {
+    symbols.forEach(({ pair, quoteAsset, status }) => {
       if (/USDT$/.test(quoteAsset)) {
+        if (status != 'TRADING') return;
         listStr += `BINANCE:${pair}.P\n`;
       }
     });
