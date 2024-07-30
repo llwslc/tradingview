@@ -26,6 +26,7 @@ const main = async () => {
       if (/DOWNUSDT$/.test(symbol)) return;
 
       if (/USDT$/.test(symbol)) {
+        if ((symbol.match(/USD/g) || []).length === 2) return;
         if (Date.now() - closeTime > 24 * 60 * 60 * 1000) return;
         listStr += `BINANCE:${symbol}\n`;
       }
