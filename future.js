@@ -23,6 +23,7 @@ const main = async () => {
 
     let listStr = '';
     symbols.forEach(({ pair, quoteAsset, status }) => {
+      if ((pair.match(/USD/g) || []).length === 2) return;
       if (/USDT$/.test(quoteAsset)) {
         if (status != 'TRADING') return;
         listStr += `BINANCE:${pair}.P\n`;
