@@ -1,5 +1,6 @@
 const fs = require('fs/promises');
 const axios = require('axios');
+const pass = require('./pass');
 
 const BINANCE_URL = 'https://api.binance.com/api/v3/ticker/24hr';
 const LIST_PATH = './list';
@@ -24,6 +25,7 @@ const main = async () => {
       if (firstId === -1) return;
       if (/UPUSDT$/.test(symbol)) return;
       if (/DOWNUSDT$/.test(symbol)) return;
+      if (pass.filter(_ => symbol.startsWith(_)).length) return;
 
       if (/USDT$/.test(symbol)) {
         if ((symbol.match(/USD/g) || []).length === 2) return;
