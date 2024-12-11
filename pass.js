@@ -16,5 +16,8 @@ module.exports = [
   // eur
   'EUR',
   'AEUR',
-  'EURI'
+  'EURI',
+
+  // other
+  'BNSOL'
 ];
